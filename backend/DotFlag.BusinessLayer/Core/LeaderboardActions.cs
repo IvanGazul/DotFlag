@@ -1,5 +1,4 @@
 using DotFlag.DataAccessLayer.Context;
-using DotFlag.Domain.Entities.Badge;
 using DotFlag.Domain.Models.Leaderboard;
 using Microsoft.EntityFrameworkCore;
 

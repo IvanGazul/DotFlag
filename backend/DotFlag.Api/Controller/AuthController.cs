@@ -1,5 +1,4 @@
-﻿using DotFlag.Api.Filters;
-using DotFlag.BusinessLayer;
+﻿using DotFlag.BusinessLayer;
 using DotFlag.BusinessLayer.Interfaces;
 using DotFlag.Domain.Models.Responses;
 using DotFlag.Domain.Models.User;

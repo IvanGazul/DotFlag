@@ -1,3 +1,5 @@
+using System.Globalization;
+using System.Text;
 using AutoMapper;
 using DotFlag.DataAccessLayer.Context;
 using DotFlag.Domain.Enums;
@@ -69,7 +71,37 @@ namespace DotFlag.BusinessLayer.Core
             };
         }
 
-        protected List<AuditLogDto> GetForExportExecution(AuditLogFilterDto filter)
+        protected string ExportToCsvExecution(AuditLogFilterDto filter)
+        {
+            var rows = GetForExportExecution(filter);
+
+            var sb = new StringBuilder();
+            sb.AppendLine("Id,CreatedOn,ActorId,ActorUsername,Action,TargetType,TargetId,IpAddress,Metadata");
+            foreach (var r in rows)
+            {
+                sb.Append(r.Id).Append(',')
+                  .Append(r.CreatedOn.ToString("O", CultureInfo.InvariantCulture)).Append(',')
+                  .Append(r.ActorId?.ToString(CultureInfo.InvariantCulture)).Append(',')
+                  .Append(Csv(r.ActorUsername)).Append(',')
+                  .Append(r.Action).Append(',')
+                  .Append(Csv(r.TargetType)).Append(',')
+                  .Append(r.TargetId?.ToString(CultureInfo.InvariantCulture)).Append(',')
+                  .Append(Csv(r.IpAddress)).Append(',')
+                  .Append(Csv(r.Metadata)).AppendLine();
+            }
+
+            return sb.ToString();
+        }
+
+        private static string Csv(string? value)
+        {
+            if (string.IsNullOrEmpty(value)) return string.Empty;
+            if (value.Contains(',') || value.Contains('"') || value.Contains('\n') || value.Contains('\r'))
+                return "\"" + value.Replace("\"", "\"\"") + "\"";
+            return value;
+        }
+
+        private List<AuditLogDto> GetForExportExecution(AuditLogFilterDto filter)
         {
             using var context = new AppDbContext();
 
