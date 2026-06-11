@@ -4,7 +4,6 @@ using DotFlag.Domain.Entities.User;
 using DotFlag.Domain.Models.Responses;
 using DotFlag.Domain.Models.User;
 using DotFlag.Domain.Enums;
-using System.Runtime.InteropServices;
 
 namespace DotFlag.BusinessLayer.Core
 {

@@ -1,10 +1,8 @@
-using DotFlag.BusinessLayer.Services;
 using DotFlag.DataAccessLayer.Context;
 using DotFlag.Domain.Entities.Badge;
 using DotFlag.Domain.Enums;
 using DotFlag.Domain.Models.Badge;
 using DotFlag.Domain.Models.Responses;
-using Microsoft.EntityFrameworkCore;
 
 namespace DotFlag.BusinessLayer.Core
 {

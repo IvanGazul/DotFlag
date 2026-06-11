@@ -15,9 +15,9 @@ public class AuditExecution : AuditActions, IAuditActions
         return GetAllExecution(filter);
     }
 
-    public List<AuditLogDto> GetForExport(AuditLogFilterDto filter)
+    public string ExportToCsv(AuditLogFilterDto filter)
     {
-        return GetForExportExecution(filter);
+        return ExportToCsvExecution(filter);
     }
 
     public ActionResponse DeleteOlderThan(DateTime cutoff, int actorId)

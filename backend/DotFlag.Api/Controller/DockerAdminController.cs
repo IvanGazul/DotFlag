@@ -1,4 +1,3 @@
-using DotFlag.Api.Extensions;
 using DotFlag.BusinessLayer;
 using DotFlag.BusinessLayer.Interfaces;
 using DotFlag.Domain.Models.Docker;

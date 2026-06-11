@@ -6,7 +6,7 @@ namespace DotFlag.BusinessLayer.Interfaces
     public interface IAuditActions
     {
         AuditLogPageDto GetAll(AuditLogFilterDto filter);
-        List<AuditLogDto> GetForExport(AuditLogFilterDto filter);
+        string ExportToCsv(AuditLogFilterDto filter);
         ActionResponse DeleteOlderThan(DateTime cutoff, int actorId);
         ActionResponse DeleteById(int id, int actorId);
     }
